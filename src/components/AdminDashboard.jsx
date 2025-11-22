@@ -231,6 +231,10 @@ const AdminDashboard = () => {
     if (import.meta.env.VITE_API_URL) {
       return import.meta.env.VITE_API_URL
     }
+    const host = window.location.hostname
+    if (host && (host.endsWith('gouc.com.br') || host.endsWith('keyunit.online'))) {
+      return '/api'
+    }
     const protocol = window.location.protocol
     return `${protocol}//api.gouc.com.br`
   }
