@@ -1,0 +1,10 @@
+node_modules/
+**/.env
+**/ssl/*
+**/*.pem
+**/*.key
+**/uploads/*
+**/*.log
+.DS_Store
+.vercel/
+

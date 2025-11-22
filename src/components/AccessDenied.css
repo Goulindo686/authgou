@@ -1,0 +1,70 @@
+.access-denied-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0a0a0a 0%, #111111 100%);
+  padding: 20px;
+}
+
+.access-denied-content {
+  text-align: center;
+  max-width: 500px;
+  padding: 40px;
+  background: #18181b;
+  border: 1px solid #27272a;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.access-denied-icon {
+  color: #71717a;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.access-denied-title {
+  font-size: 72px;
+  font-weight: 700;
+  color: #e4e4e7;
+  margin: 0 0 16px 0;
+  line-height: 1;
+}
+
+.access-denied-subtitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: #a1a1aa;
+  margin: 0 0 16px 0;
+}
+
+.access-denied-message {
+  font-size: 16px;
+  color: #71717a;
+  margin: 0 0 32px 0;
+  line-height: 1.6;
+}
+
+.access-denied-button {
+  background: #3f3f46;
+  color: #e4e4e7;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.access-denied-button:hover {
+  background: #52525b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.access-denied-button:active {
+  transform: translateY(0);
+}
+

@@ -1,0 +1,41 @@
+{
+  "name": "auth-system",
+  "version": "1.0.0",
+  "description": "Sistema de autenticação com integração C++, C#, Lua - Similar KeyUnit",
+  "private": true,
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "build:android": "vite build && npx cap sync android",
+    "android:open": "npx cap open android",
+    "android:sync": "npx cap sync android",
+    "android:copy": "npx cap copy android",
+    "android:run": "npm run build:android && npx cap open android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.4.4",
+    "@capacitor/cli": "^7.4.4",
+    "@capacitor/core": "^7.4.4",
+    "@supabase/supabase-js": "^2.45.0",
+    "axios": "1.6.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.18.2",
+    "mercadopago": "^2.10.0",
+    "multer": "^2.0.2",
+    "mysql2": "^3.6.5",
+    "nodemailer": "^6.9.8",
+    "qrcode": "^1.5.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "speakeasy": "^2.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.0",
+    "nodemon": "^3.0.2",
+    "vite": "^5.0.0"
+  }
+}

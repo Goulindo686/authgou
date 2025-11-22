@@ -1,0 +1,82 @@
+.App {
+  width: 100%;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  margin: 0;
+  padding: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .App {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+  }
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  margin: 0;
+  padding: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #root {
+    height: 100vh;
+  }
+}
+
+.app-loading {
+  width: 100%;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, 
+    #0a0e27 0%, 
+    #1a1f3a 20%,
+    #1e2340 40%,
+    #2d3258 60%,
+    #1e2340 80%,
+    #0f172a 100%);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .app-loading {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+  }
+}
+
+.app-loading .loading-spinner-large {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-loading .spinner-svg {
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+.app-loading .spinner-circle {
+  fill: none;
+  stroke: #3b82f6;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 90;
+  stroke-dashoffset: 60;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+

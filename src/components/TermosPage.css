@@ -1,0 +1,542 @@
+/* ========================================
+   TERMOS PAGE - MAIN CONTAINER
+   ======================================== */
+.termos-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #0a0a0a;
+  color: #e4e4e7;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.termos-logo .logo-key { color: transparent; position: relative; }
+.termos-logo .logo-key::before {
+  content: 'Gou';
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: linear-gradient(135deg, #e4e4e7 0%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.termos-logo .logo-unit { color: transparent; position: relative; }
+.termos-logo .logo-unit::before {
+  content: 'Auth';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #60a5fa;
+}
+
+/* Fundo quadriculado azul igual ao site */
+.termos-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.termos-container::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: none;
+  background-image: none;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+}
+
+/* Custom Scrollbar */
+/* Scrollbar invisível */
+.termos-container::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+  background: transparent;
+}
+
+.termos-container::-webkit-scrollbar-track {
+  display: none;
+  background: transparent;
+}
+
+.termos-container::-webkit-scrollbar-thumb {
+  display: none;
+  background: transparent;
+}
+
+.termos-container::-webkit-scrollbar-thumb:hover {
+  display: none;
+  background: transparent;
+}
+
+.termos-container {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* ========================================
+   HEADER DE NAVEGAÇÃO
+   ======================================== */
+.termos-header {
+  position: relative;
+  width: 100%;
+  padding: 20px 50px;
+  background: rgba(20, 20, 20, 0.7);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 10;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.termos-header-content {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.termos-logo {
+  display: none !important;
+}
+
+.logo-key {
+  background: linear-gradient(135deg, #e4e4e7 0%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logo-unit {
+  color: #60a5fa;
+}
+
+.termos-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: rgba(16, 16, 16, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  padding: 10px 18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  backdrop-filter: blur(8px);
+}
+
+.termos-nav .nav-link {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 8px 0;
+}
+
+.termos-nav .nav-link::after { display: none; }
+
+.termos-nav .nav-link:hover {
+  color: #ffffff;
+}
+
+.termos-nav .nav-link:hover { background: rgba(255,255,255,0.06); }
+.termos-nav .nav-link.active { background: rgba(255,255,255,0.08); }
+
+.termos-nav .nav-link.active {
+  color: #60a5fa;
+}
+
+.termos-nav .nav-link.active::after {
+  width: 100%;
+}
+
+/* ========================================
+   IMAGEM DECORATIVA
+   ======================================== */
+.termos-svg-animation {
+  position: absolute;
+  top: 130px;
+  right: 20px;
+  width: 200px;
+  height: 160px;
+  z-index: 2;
+  opacity: 0.9;
+}
+
+.termos-decorative-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: floatImage 4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes floatImage {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ========================================
+   CONTEÚDO PRINCIPAL
+   ======================================== */
+.termos-content {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  padding: 60px 50px 80px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  min-height: calc(100vh - 80px);
+}
+
+.termos-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 100%;
+}
+
+.termos-title {
+  font-size: 48px;
+  font-weight: 900;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: linear-gradient(135deg, #ffffff 0%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -1px;
+}
+
+.title-icon {
+  display: flex;
+  align-items: center;
+  color: #60a5fa;
+  animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.9;
+  }
+}
+
+.termos-intro {
+  margin-bottom: 60px;
+  padding: 30px;
+  background: rgba(59, 130, 246, 0.05);
+  border-left: 4px solid #60a5fa;
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.intro-text {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 15px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.intro-text strong {
+  color: #60a5fa;
+  font-weight: 700;
+}
+
+.intro-date {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+}
+
+/* ========================================
+   SEÇÕES
+   ======================================== */
+.termos-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.termos-section {
+  background: rgba(15, 23, 42, 0.4);
+  border-radius: 12px;
+  padding: 40px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(59, 130, 246, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.termos-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #60a5fa, #3b82f6);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.termos-section:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+}
+
+.termos-section:hover::before {
+  opacity: 1;
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #ffffff;
+}
+
+.section-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #2a2a2e, #3f3f46);
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 900;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.section-content {
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+.section-content p {
+  margin-bottom: 15px;
+}
+
+.section-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* ========================================
+   LISTAS
+   ======================================== */
+.termos-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.termos-list li {
+  padding: 12px 0 12px 30px;
+  position: relative;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.termos-list li:last-child {
+  border-bottom: none;
+}
+
+.termos-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #a1a1aa;
+  font-weight: 900;
+  font-size: 18px;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.termos-footer {
+  margin-top: 80px;
+  padding: 40px 0;
+  background: transparent;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer-text {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.footer-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.footer-button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+}
+
+.footer-button:active {
+  transform: translateY(0);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 1024px) {
+  .termos-svg-animation {
+    display: none;
+  }
+
+  .termos-content {
+    padding: 40px 30px 60px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .termos-title {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .termos-header {
+    padding: 15px 20px;
+  }
+
+  .termos-logo {
+    font-size: 20px;
+  }
+
+  .termos-nav {
+    gap: 20px;
+  }
+
+  .termos-nav .nav-link {
+    font-size: 14px;
+  }
+
+  .termos-content {
+    padding: 30px 20px 50px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .termos-title {
+    font-size: 28px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .termos-section {
+    padding: 25px;
+  }
+
+  .section-title {
+    font-size: 22px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .section-number {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .termos-intro {
+    padding: 20px;
+  }
+
+  .intro-text {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .termos-header {
+    padding: 12px 15px;
+  }
+
+  .termos-nav {
+    gap: 15px;
+  }
+
+  .termos-content {
+    padding: 20px 15px 40px;
+  }
+
+  .termos-title {
+    font-size: 24px;
+  }
+
+  .termos-section {
+    padding: 20px;
+  }
+
+  .section-title {
+    font-size: 20px;
+  }
+}
+
