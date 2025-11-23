@@ -48,6 +48,27 @@ const PlanosPage = () => {
       popular: false
     },
     {
+      id: 'test_5m',
+      name: 'PLANO 5 MIN',
+      subtitle: null,
+      price: '2,00',
+      period: '/ 5 min',
+      duration: '5 minutos',
+      description: 'Acesso rápido para testar recursos por poucos minutos',
+      features: [
+        'Acesso temporário',
+        'Recursos essenciais',
+        'Ideal para testes rápidos'
+      ],
+      icon: (
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="10" />
+          <polyline points="12 6 12 12 16 14" />
+        </svg>
+      ),
+      popular: false
+    },
+    {
       id: 'weekly',
       name: 'PLANO SEMANAL',
       subtitle: null,
@@ -177,7 +198,15 @@ const PlanosPage = () => {
   ]
 
   const handleSelectPlan = (planId) => {
-    // Redirecionar para página de login/cadastro com plano selecionado
+    const s = localStorage.getItem('sessionid')
+    if (planId === 'test_5m') {
+      if (s) {
+        navigate('/payment?plan=test_5m&period=minutes5')
+        return
+      }
+      navigate('/')
+      return
+    }
     navigate('/', { state: { selectedPlan: planId } })
   }
 
