@@ -9,9 +9,15 @@ const isAndroid = () => {
 
 // Função para obter a URL da API
 const getApiUrl = () => {
-  // Se houver variável de ambiente configurada, usar ela (tem prioridade)
+  // Se houver variável de ambiente, usar somente se for relativa ou mesmo domínio
   if (import.meta.env.VITE_API_URL) {
-    return import.meta.env.VITE_API_URL
+    const url = import.meta.env.VITE_API_URL
+    try {
+      if (url.startsWith('/')) return url
+      const u = new URL(url)
+      const sameOrigin = (typeof window !== 'undefined') && (u.hostname === window.location.hostname)
+      if (sameOrigin) return u.pathname || '/api'
+    } catch {}
   }
 
   // Android (Capacitor) usa sempre domínio da API em produção
