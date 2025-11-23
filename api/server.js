@@ -9780,8 +9780,8 @@ app.post('/api/payment/create-preference', async (req, res) => {
     const periodName = periodNames[period] || period
 
     // Criar preferência de pagamento
-    const frontendUrl = process.env.FRONTEND_URL || 'http://keyunit.online:3000'
-    const apiUrl = process.env.API_URL || 'https://api.keyunit.online:3001'
+    const frontendUrl = process.env.FRONTEND_URL || 'https://www.gouc.com.br'
+    const apiUrl = process.env.API_URL || 'https://www.gouc.com.br'
     
     const preferenceData = {
       items: [

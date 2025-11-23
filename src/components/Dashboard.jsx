@@ -632,7 +632,7 @@ const Dashboard = () => {
       return import.meta.env.VITE_API_URL
     }
     const protocol = window.location.protocol
-    return `${protocol}//api.keyunit.online`
+    return `${protocol}//www.gouc.com.br`
   }
   const API_BASE_URL = getApiBaseUrl()
   const API_URL = `${API_BASE_URL}/api/1.3`
@@ -7339,7 +7339,7 @@ $auth->login("usuario", "senha");`
                     <code className="endpoint-url">POST /api/1.3/anticrack/report</code>
                   </div>
                   <p className="endpoint-description">
-                    Base URL: <code>{currentApp ? `https://api.keyunit.online` : 'https://api.keyunit.online'}</code>
+                    Base URL: <code>{currentApp ? `https://www.gouc.com.br` : 'https://www.gouc.com.br'}</code>
                   </p>
                 </div>
 
@@ -7357,7 +7357,7 @@ using System.Threading.Tasks;
 public class AntiCrackClient
 {
     private readonly HttpClient _httpClient;
-    private readonly string _apiUrl = "https://api.keyunit.online";
+    private readonly string _apiUrl = "https://www.gouc.com.br";
     private readonly string _appName;
     private readonly string _ownerId;
     private readonly string _sessionId;
@@ -7528,7 +7528,7 @@ if (antiCrack.DetectDebugger())
 
 class AntiCrackClient {
 private:
-    std::string apiUrl = "https://api.keyunit.online";
+    std::string apiUrl = "https://www.gouc.com.br";
     std::string appName;
     std::string ownerId;
     std::string sessionId;
