@@ -1334,18 +1334,28 @@ app.post('/api/send-verification-code', async (req, res) => {
         const expires = new Date(Date.now() + config.verificationCodeExpiry)
         const code = generateVerificationCode()
         await db.insertVerificationCode({ email, code, username, password_hash: passwordHash, expires, used: false })
-        await sendVerificationEmail(email, code)
-        return res.json({ success: true, message: 'Código de verificação enviado para seu email!' })
+        try {
+          await sendVerificationEmail(email, code)
+          return res.json({ success: true, message: 'Código de verificação enviado para seu email!' })
+        } catch (emailError) {
+          let errorMessage = 'Erro ao enviar email'
+          if (emailError.code === 'EAUTH') {
+            errorMessage = 'Erro de autenticação. Verifique EMAIL_USER e EMAIL_PASS no ambiente'
+          } else if (emailError.code === 'ECONNECTION') {
+            errorMessage = 'Erro de conexão com o servidor de email'
+          } else if (emailError.responseCode === 535) {
+            errorMessage = 'Credenciais inválidas para SMTP'
+          } else if (emailError.message) {
+            errorMessage = `Erro ao enviar email: ${emailError.message}`
+          }
+          if (ALLOW_DEBUG_CODES) {
+            return res.json({ success: true, message: 'Código gerado. O envio por email falhou, use o código exibido.', debug: { code } })
+          }
+          return res.status(500).json({ success: false, message: errorMessage, error: emailError.message, code: emailError.code })
+        }
       } catch (supabaseError) {
         const msg = supabaseError.message || 'Erro no banco (Supabase)'
         const needsSchema = /relation .* does not exist/i.test(msg) || /table .* does not exist/i.test(msg)
-        if (ALLOW_DEBUG_CODES) {
-          return res.json({
-            success: true,
-            message: 'Código gerado. O envio por email falhou, use o código exibido.',
-            debug: { code }
-          })
-        }
         return res.status(500).json({
           success: false,
           message: needsSchema
@@ -1363,13 +1373,6 @@ app.post('/api/send-verification-code', async (req, res) => {
     } catch (dbError) {
       console.error('❌ [SEND-VERIFICATION-CODE] Erro ao obter conexão do banco de dados:', dbError.message)
       console.error('❌ [SEND-VERIFICATION-CODE] Stack:', dbError.stack)
-      if (ALLOW_DEBUG_CODES) {
-        return res.json({
-          success: true,
-          message: 'Código gerado. O envio por email falhou, use o código exibido.',
-          debug: { code }
-        })
-      }
       return res.status(500).json({
         success: false,
         message: 'Erro ao conectar ao banco de dados',
@@ -2191,6 +2194,13 @@ app.post('/api/send-2fa-email', async (req, res) => {
         })
       }
       
+      if (ALLOW_DEBUG_CODES) {
+        return res.json({
+          success: true,
+          message: 'Código gerado. O envio por email falhou, use o código exibido.',
+          debug: { code }
+        })
+      }
       return res.status(500).json({
         success: false,
         message: errorMessage,

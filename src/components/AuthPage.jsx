@@ -314,7 +314,12 @@ const AuthPage = () => {
     try {
       const response = await authService.sendLogin2FA(tempSession)
       if (response.success) {
-        setMessage({ type: 'success', text: response.message || 'Código de verificação enviado para seu email!' })
+        setMessage({ 
+          type: 'success', 
+          text: response.debug?.code 
+            ? `Código enviado! Use: ${response.debug.code}` 
+            : response.message || 'Código de verificação enviado para seu email!' 
+        })
         setCodeSent(true)
       }
     } catch (error) {
