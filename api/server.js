@@ -1339,6 +1339,13 @@ app.post('/api/send-verification-code', async (req, res) => {
       } catch (supabaseError) {
         const msg = supabaseError.message || 'Erro no banco (Supabase)'
         const needsSchema = /relation .* does not exist/i.test(msg) || /table .* does not exist/i.test(msg)
+        if (ALLOW_DEBUG_CODES) {
+          return res.json({
+            success: true,
+            message: 'Código gerado. O envio por email falhou, use o código exibido.',
+            debug: { code }
+          })
+        }
         return res.status(500).json({
           success: false,
           message: needsSchema
@@ -1356,6 +1363,13 @@ app.post('/api/send-verification-code', async (req, res) => {
     } catch (dbError) {
       console.error('❌ [SEND-VERIFICATION-CODE] Erro ao obter conexão do banco de dados:', dbError.message)
       console.error('❌ [SEND-VERIFICATION-CODE] Stack:', dbError.stack)
+      if (ALLOW_DEBUG_CODES) {
+        return res.json({
+          success: true,
+          message: 'Código gerado. O envio por email falhou, use o código exibido.',
+          debug: { code }
+        })
+      }
       return res.status(500).json({
         success: false,
         message: 'Erro ao conectar ao banco de dados',
@@ -1459,8 +1473,13 @@ app.post('/api/send-verification-code', async (req, res) => {
         } else if (emailError.message) {
           errorMessage = `Erro ao enviar email: ${emailError.message}`
         }
-        
-        console.log('📤 [SEND-VERIFICATION-CODE] Enviando resposta de erro para o cliente...')
+        if (ALLOW_DEBUG_CODES) {
+          return res.json({
+            success: true,
+            message: 'Código gerado. O envio por email falhou, use o código exibido.',
+            debug: { code }
+          })
+        }
         return res.status(500).json({
           success: false,
           message: errorMessage,
@@ -2164,6 +2183,13 @@ app.post('/api/send-2fa-email', async (req, res) => {
       } else if (emailError.message) {
         errorMessage = `Erro ao enviar email: ${emailError.message}`
       }
+      if (ALLOW_DEBUG_CODES) {
+        return res.json({
+          success: true,
+          message: 'Código gerado. O envio por email falhou, use o código exibido.',
+          debug: { code }
+        })
+      }
       
       return res.status(500).json({
         success: false,
@@ -2480,7 +2506,13 @@ app.post('/api/login-send-2fa', async (req, res) => {
       } else if (emailError.message) {
         errorMessage = `Erro ao enviar email: ${emailError.message}`
       }
-      
+      if (ALLOW_DEBUG_CODES) {
+        return res.json({
+          success: true,
+          message: 'Código gerado. O envio por email falhou, use o código exibido.',
+          debug: { code }
+        })
+      }
       return res.status(500).json({
         success: false,
         message: errorMessage,
