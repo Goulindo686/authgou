@@ -30,16 +30,8 @@ const getApiUrl = () => {
     return ''
   }
 
-  // Produção: se o frontend estiver em keyunit.online ou gouc.com.br, apontar para a API pública
-  const host = window.location.hostname
-  if (host && host.endsWith('keyunit.online')) {
-    return '/api'
-  }
-  if (host && host.endsWith('gouc.com.br')) {
-    return '/api'
-  }
-
-  // Fallback seguro: caminhos relativos (caso haja proxy/CDN no mesmo domínio)
+  // Produção: usar caminhos relativos; endpoints já começam com '/api'
+  // Isso evita prefixo duplicado quando o site está no mesmo domínio da API
   return ''
 }
 
