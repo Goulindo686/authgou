@@ -8581,12 +8581,6 @@ int main() {
                       <span>Todos</span>
                     </button>
                     <button
-                      className={`period-selector-btn ${selectedPeriodFilter === 'minutes5' ? 'active' : ''}`}
-                      onClick={() => setSelectedPeriodFilter('minutes5')}
-                    >
-                      <span>5 Min</span>
-                    </button>
-                    <button
                       className={`period-selector-btn ${selectedPeriodFilter === 'weekly' ? 'active' : ''}`}
                       onClick={() => setSelectedPeriodFilter('weekly')}
                     >
@@ -8621,56 +8615,6 @@ int main() {
 
                 {/* Plans Grid */}
                 <div className="plans-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px', marginTop: '32px' }}>
-                  {(selectedPeriodFilter === 'all' || selectedPeriodFilter === 'minutes5') && (
-                  <div className="plan-card plan-test_5m">
-                    <div className="plan-header">
-                      <div className="plan-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <circle cx="12" cy="12" r="10" />
-                          <polyline points="12 6 12 12 16 14" />
-                        </svg>
-                      </div>
-                      <h3 className="plan-title">PLANO 5 MIN</h3>
-                    </div>
-                    <div className="plan-price">
-                      <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px', flexWrap: 'nowrap', whiteSpace: 'nowrap' }}>
-                        <span className="plan-amount">R$ 2,00</span>
-                        <span className="plan-period">/ 5 min</span>
-                      </div>
-                      <p style={{ fontSize: '12px', opacity: 0.8, marginTop: '4px', marginBottom: 0 }}>Duração: 5 minutos</p>
-                    </div>
-                    <div className="plan-features">
-                      <div className="plan-feature" style={{ '--index': 0 }}>
-                        <svg className="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                          <path className="check-path" d="M20 6L9 17l-5-5"/>
-                        </svg>
-                        <span>Acesso temporário</span>
-                      </div>
-                      <div className="plan-feature" style={{ '--index': 1 }}>
-                        <svg className="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                          <path className="check-path" d="M20 6L9 17l-5-5"/>
-                        </svg>
-                        <span>Recursos essenciais</span>
-                      </div>
-                      <div className="plan-feature" style={{ '--index': 2 }}>
-                        <svg className="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                          <path className="check-path" d="M20 6L9 17l-5-5"/>
-                        </svg>
-                        <span>Ideal para testes rápidos</span>
-                      </div>
-                    </div>
-                    <button 
-                      className="plan-button plan-button-test_5m"
-                      onClick={() => handleUpgradeClick('test_5m', 'minutes5')}
-                    >
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="15 18 9 12 15 6" />
-                      </svg>
-                      <span>Escolher Plano 5 Min</span>
-                      <div className="plan-button-shine"></div>
-                    </button>
-                  </div>
-                  )}
                   {/* Plano Teste - Sempre visível */}
                   {selectedPeriodFilter === 'all' && (
                   <div className="plan-card plan-tester">
